@@ -9,16 +9,20 @@ pub struct SysRegex {
 }
 
 impl SysRegex {
-    pub fn find_iter<'r, 't>(&'r self, inside: &'t str) -> onig::FindMatches<'r, 't> {
-        self.regex.find_iter(inside)
-    }
-
     pub fn new(
         regex_str: &str,
     ) -> std::result::Result<Self, Box<dyn Error + Send + Sync + 'static>> {
         Ok(Self {
             regex: Regex::new(regex_str)?,
         })
+    }
+
+    pub fn find_iter<'r, 't>(&'r self, inside: &'t str) -> onig::FindMatches<'r, 't> {
+        self.regex.find_iter(inside)
+    }
+
+    pub fn regex(&self) -> &Regex {
+        &self.regex
     }
 }
 

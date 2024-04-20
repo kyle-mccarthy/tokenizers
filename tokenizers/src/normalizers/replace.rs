@@ -77,6 +77,18 @@ impl Replace {
             regex,
         })
     }
+
+    pub fn content(&self) -> &str {
+        &self.content
+    }
+
+    pub fn pattern(&self) -> &ReplacePattern {
+        &self.pattern
+    }
+
+    pub fn regex_pattern(&self) -> &SysRegex {
+        &self.regex
+    }
 }
 
 impl Normalizer for Replace {
